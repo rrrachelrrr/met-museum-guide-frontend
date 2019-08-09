@@ -21,6 +21,13 @@ class Login extends Component {
       },
       body: JSON.stringify(this.state)
     })
+    .then(res => res.json())
+    .then(data => {
+      if (data.token) {
+        localStorage.token = data.token
+        this.props.history.push("/paintings")
+      }
+    })
   }
 
     render(){

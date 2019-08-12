@@ -5,6 +5,7 @@ import ProfilePage from './components/search-page/ProfilePage.js'
 import Signup from './components/welcome/Signup.js'
 import Login from './components/welcome/Login.js'
 import Welcome from './components/welcome/Welcome.js'
+import NavBar from './components/welcome/NavBar.js'
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
 
@@ -21,8 +22,12 @@ class App extends React.Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/paintings"
-        render={(routerProps)=> <Search
-        {...routerProps} />}
+        render={(routerProps)=>
+          <>
+          <NavBar />
+          <Search
+        {...routerProps} />
+          </> }
         />
         <Route path="/profile" component={ProfilePage} />
         <Route exact path="/" component={Welcome} />

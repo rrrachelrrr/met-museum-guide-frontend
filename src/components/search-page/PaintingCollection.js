@@ -16,7 +16,7 @@ class PaintingCollection extends Component {
     // console.log("painting collection:", this.props.paintings)
       const allPaintings = this.props.paintings.map(paintingID => {
         return <Painting metID={paintingID}
-        key={paintingID}/>
+        key={paintingID} searchTerm={this.props.searchTerm}/>
       })
       return (
         <div className="PaintingCollection">

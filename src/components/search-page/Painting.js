@@ -4,16 +4,23 @@ import { Card, Image } from 'semantic-ui-react';
 class Painting extends Component {
 
   state = {
+    searchTerm: this.props.searchTerm,
     artist: "",
     title: "",
     img_url: "",
     date: "",
     department: "",
-    isHighlight: false
+    isHighlight: false,
+    buttonLiked: false,
   }
   // artist: artistAlphaSort,
   // img_url: primaryImage,
   // date: objectDate
+
+handleButtonClick = () => {
+  this.setState({buttonLiked: true})
+  console.log(this.state)
+}
 
 fetchArt = () => {
   fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.metID}`)
@@ -41,15 +48,13 @@ componentDidUpdate(prevProps){
     }
 }
 
-handleFavoriteClick = () => {
-  console.log(this.state)
-}
   render(){
+    const buttonText = this.state.buttonLiked ? "Saved!" : "Save"
     // console.log(this.state)
     return (
       <div className="Painting">
       <Card.Content>
-        <div onClick={this.handleFavoriteClick}>❤️</div>
+      <button onClick={this.handleButtonClick}>{buttonText}</button>
         <Image src={this.state.img_url} alt={this.state.title}/>
         <Card.Header>
          <strong>{this.state.title}</strong>
@@ -63,21 +68,6 @@ handleFavoriteClick = () => {
       </div>
   );}
 }
-//
-// <Card.Content>
-//   <Card.Header>Matthew</Card.Header>
-//   <Card.Meta>
-//     <span className='date'>Joined in 2015</span>
-//   </Card.Meta>
-//   <Card.Description>
-//     Matthew is a musician living in Nashville.
-//   </Card.Description>
-// </Card.Content>
-// <Card.Content extra>
-//   <a>
-//     <Icon name='user' />
-//     22 Friends
-//   </a>
-// </Card.Content>
+
 
 export default Painting;

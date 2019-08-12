@@ -22,12 +22,12 @@ class Search extends Component {
     // console.log(this.state)
     return (
       <>
-    <h1> "FIND SOME ART"</h1>
+    <h1> FIND SOME ART</h1>
     <input value={this.state.searchTerm}
     onChange={this.handleChange}
     type="search" />
     <button value="submit"  onClick={this.setSearch}> Find some art! </button>
-    <PaintingCollection paintings={this.state.displayPaintings}/>
+    <PaintingCollection paintings={this.state.displayPaintings} searchTerm={this.state.searchTerm}/>
     </>
   )
   }

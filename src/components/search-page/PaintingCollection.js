@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Painting from './Painting.js'
+import Painting from './Painting.js';
 
 class PaintingCollection extends Component {
 
@@ -15,11 +15,11 @@ class PaintingCollection extends Component {
   render(){
     // console.log("painting collection:", this.props.paintings)
       const allPaintings = this.props.paintings.map(paintingID => {
-        return <Painting metID={paintingID}/>
+        return <Painting metID={paintingID}
+        key={paintingID}/>
       })
       return (
         <div className="PaintingCollection">
-          <h1>paintings live here 🎨</h1>
           {allPaintings}
         </div>
     )

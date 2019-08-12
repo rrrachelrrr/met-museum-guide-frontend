@@ -15,21 +15,11 @@ class Search extends Component {
   setSearch = () => {
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${this.state.searchTerm}`)
     .then(res=>res.json())
-    .then(artData => this.setState({displayPaintings: artData.objectIDs.slice(0,10)}))
+    .then(artData => this.setState({displayPaintings: artData.objectIDs.slice(0,12)}))
   }
 
-  // paintingsOnTheDom = () => {
-  //   fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.metID}`)
-  //   .then(res=>res.json())
-  //   .then(artData => {
-  //     this.setState({
-  //       img_url: artData.primaryImageSmall
-  //     })
-  //   })
-  // }
-
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <>
     <h1> "FIND SOME ART"</h1>

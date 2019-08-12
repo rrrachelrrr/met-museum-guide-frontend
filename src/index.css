@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+
+.PaintingCollection {
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Painting {
+  border: 2px solid black;
+  width: 25rem;
+  max-height: 50rem;
+  overflow: hidden;
+  border-style: solid;
+  border-color: gray;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 15px;
+  background-color:white;
+ }

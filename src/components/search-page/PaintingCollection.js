@@ -12,10 +12,6 @@ class PaintingCollection extends Component {
   //   )
   // }
 
-  // render() {
-  //   const allPokemon = this.props.pokemon.map(pokeman => {
-  //     return <PokemonCard key={pokeman.id} onAddPokemonToTeam={this.props.onAddPokemonToTeam} {...pokeman}/>
-
   render(){
     // console.log("painting collection:", this.props.paintings)
       const allPaintings = this.props.paintings.map(paintingID => {

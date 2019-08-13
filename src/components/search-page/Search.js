@@ -27,7 +27,8 @@ class Search extends Component {
     onChange={this.handleChange}
     type="search" />
     <button value="submit"  onClick={this.setSearch}> Find some art! </button>
-    <PaintingCollection paintings={this.state.displayPaintings} searchTerm={this.state.searchTerm}/>
+    <PaintingCollection paintings={this.state.displayPaintings} searchTerm={this.state.searchTerm}
+    user_id={this.props.user_id}/>
     </>
   )
   }

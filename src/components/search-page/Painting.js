@@ -4,7 +4,6 @@ import { Card, Image } from 'semantic-ui-react';
 class Painting extends Component {
 
   state = {
-    searchTerm: this.props.searchTerm,
     artist: "",
     title: "",
     img_url: "",
@@ -13,13 +12,34 @@ class Painting extends Component {
     isHighlight: false,
     buttonLiked: false,
   }
-  // artist: artistAlphaSort,
-  // img_url: primaryImage,
-  // date: objectDate
 
-handleButtonClick = () => {
-  this.setState({buttonLiked: true})
-  console.log(this.state)
+  // searchTerm: this.props.searchTerm,
+  // metID: this.props.metID
+
+saveArtToCollection = () => {
+  this.setState({buttonLiked: true});
+  const favArt = {
+    user_id: this.props.user_id,
+    api_id: this.props.metID,
+    keyword: this.props.searchTerm,
+    is_highlight: this.state.isHighlight,
+    img_url: this.state.img_url,
+    title: this.state.title,
+    artist: this.state.artist,
+    date: this.state.date,
+    collection: this.state.department
+  };
+
+  fetch("http://localhost:3000/fav_arts", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(favArt)
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
 }
 
 fetchArt = () => {
@@ -49,12 +69,13 @@ componentDidUpdate(prevProps){
 }
 
   render(){
+    // console.log(favArt)
     const buttonText = this.state.buttonLiked ? "Saved!" : "Save"
     // console.log(this.state)
     return (
       <div className="Painting">
       <Card.Content>
-      <button onClick={this.handleButtonClick}>{buttonText}</button>
+      <button onClick={this.saveArtToCollection}>{buttonText}</button>
         <Image src={this.state.img_url} alt={this.state.title}/>
         <Card.Header>
          <strong>{this.state.title}</strong>

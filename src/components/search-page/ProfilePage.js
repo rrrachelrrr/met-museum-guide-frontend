@@ -28,13 +28,18 @@ class ProfilePage extends Component {
 
   render(){
     const filteredArt = this.state.art.filter(art => art.user_id === this.props.user_id)
-    console.log(filteredArt)
+    const myArt = filteredArt.map(art => {
+      return <FavPainting art={art}/> 
+    })
+
+    console.log("filter", filteredArt)
+    console.log("render", myArt)
 
     return (
       <div className="ProfilePage">
         <span>Hi {this.props.name} it's all yr stuff</span>
-        <div>
-
+        <div className="favorite-art-div">
+          {myArt}
         </div>
       </div>
   );}

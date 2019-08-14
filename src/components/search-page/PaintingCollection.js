@@ -4,7 +4,7 @@ import Painting from './Painting.js';
 class PaintingCollection extends Component {
 
   render(){
-    console.log("painting collection:", this.props)
+    // console.log("painting collection:", this.props)
       const allPaintings = this.props.paintings.map(paintingID => {
         return <Painting metID={paintingID}
         key={paintingID} searchTerm={this.props.searchTerm}

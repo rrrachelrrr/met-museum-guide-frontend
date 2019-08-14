@@ -11,6 +11,20 @@ class ProfilePage extends Component {
      data.filter(art => art.user_id === this.props.user_id)
     }
 
+  deleteOneArt = (id) => {
+    fetch(`http://localhost:3000/fav_arts/${id}`, {
+      method: 'DELETE',
+      headers: { Authorization: localStorage.token }
+    })
+    .then(res => res.json())
+
+    // deletedArt = this.state.art.filter(art => art.id !== id)
+
+    this.setState({art: this.state.art.filter(art => {
+      return art.id !== id
+    })})
+  }
+
   componentDidMount(){
     // fetch(`http://localhost:3000/users/${this.props.user_id}`, {
     //   headers: { Authorization: localStorage.token }
@@ -29,11 +43,11 @@ class ProfilePage extends Component {
   render(){
     const filteredArt = this.state.art.filter(art => art.user_id === this.props.user_id)
     const myArt = filteredArt.map(art => {
-      return <FavPainting art={art}/> 
+      return <FavPainting art={art} deleteOneArt={this.deleteOneArt} key={art.metID}/>
     })
 
-    console.log("filter", filteredArt)
-    console.log("render", myArt)
+    // console.log("filter", filteredArt)
+    // console.log("render", myArt)
 
     return (
       <div className="ProfilePage">
@@ -46,19 +60,3 @@ class ProfilePage extends Component {
 }
 
 export default ProfilePage;
-
-
-//   render(){
-//     console.log("painting collection:", this.props)
-//       const allPaintings = this.props.paintings.map(paintingID => {
-//         return <Painting metID={paintingID}
-//         key={paintingID} searchTerm={this.props.searchTerm}
-//         user_id={this.props.user_id}/>
-//       })
-//       return (
-//         <div className="PaintingCollection">
-//           {allPaintings}
-//         </div>
-//     )
-//   }
-// }

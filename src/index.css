@@ -33,6 +33,26 @@ code {
   background-color:white;
  }
 
+ .favorite-art-div {
+   padding: 25px;
+   display: flex;
+   flex-wrap: wrap;
+ }
+
+ .one-art-please {
+   border: 2px solid black;
+   width: 25rem;
+   max-height: 50rem;
+   overflow: hidden;
+   border-style: solid;
+   border-color: gray;
+   padding: 10px;
+   margin: 5px;
+   border-radius: 15px;
+   background-color:white;
+  }
+
+
  .save-button {
-   
+
  }

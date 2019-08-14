@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import PaintingCollection from './components/search-page/PaintingCollection.js'
+// import PaintingCollection from './components/search-page/PaintingCollection.js'
 import Search from './components/search-page/Search.js'
 import ProfilePage from './components/search-page/ProfilePage.js'
 import Signup from './components/welcome/Signup.js'

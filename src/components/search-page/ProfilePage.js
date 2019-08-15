@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import FavPainting from './FavPainting.js';
 
 class ProfilePage extends Component {
@@ -26,12 +27,6 @@ class ProfilePage extends Component {
   }
 
   componentDidMount(){
-    // fetch(`http://localhost:3000/users/${this.props.user_id}`, {
-    //   headers: { Authorization: localStorage.token }
-    // })
-    // .then(res => res.json())
-    // .then(data => console.log(data))
-
     fetch("http://localhost:3000/fav_arts", {
       headers: { Authorization: localStorage.token }
     })
@@ -51,7 +46,7 @@ class ProfilePage extends Component {
 
     return (
       <div className="ProfilePage">
-        <span>Hi {this.props.name} it's all yr stuff</span>
+        <span>Hi {this.props.name} it's all yr stuff</span> <Link to={'/paintings'} > Search more art </Link>
         <div className="favorite-art-div">
           {myArt}
         </div>

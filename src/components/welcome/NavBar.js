@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
 
-// componentDidMount(){
-//   fetch('http://localhost:3000/current_user', {
-//     headers: { Authorization:  localStorage.token } } )
-//     .then(resp => resp.json())
-//     .then(data => this.setState({
-//       name: data.name
-//     }))
-// }
+
+  handleLogout = () => {
+    localStorage.clear()
+    this.props.clearName()
+  }
+
   render(){
     // console.log(this.props)
     return (
@@ -23,6 +21,7 @@ class NavBar extends Component {
           </>
            : (`Welcome, Art Lover!`)
         }
+        <label><Link to={'/login'} onClick={this.handleLogout}> Log Out </Link></label>
       </div>
   );}
 }

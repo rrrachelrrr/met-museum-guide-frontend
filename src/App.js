@@ -18,6 +18,15 @@ class App extends React.Component {
     user_id: ""
   }
 
+  clearName = () => {
+    this.setState({
+      name: "",
+      username: "",
+      user_id: ""
+    })
+  }
+
+
   componentDidMount(){
     if(localStorage.token){
     fetch('http://localhost:3000/current_user', {
@@ -45,7 +54,8 @@ class App extends React.Component {
               {...routerProps}
               username={this.state.username}
               name={this.state.name}
-              user_id={this.state.user_id} />
+              user_id={this.state.user_id}
+              clearName={this.clearName}/>
             <Search
               {...routerProps}
               username={this.state.username}

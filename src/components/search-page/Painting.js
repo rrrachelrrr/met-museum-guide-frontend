@@ -16,57 +16,57 @@ class Painting extends Component {
   // searchTerm: this.props.searchTerm,
   // metID: this.props.metID
 
-saveArtToCollection = () => {
-  this.setState({buttonLiked: true});
-  const favArt = {
-    user_id: this.props.user_id,
-    api_id: this.props.metID,
-    keyword: this.props.searchTerm,
-    is_highlight: this.state.isHighlight,
-    img_url: this.state.img_url,
-    title: this.state.title,
-    artist: this.state.artist,
-    date: this.state.date,
-    collection: this.state.department
-  };
+  saveArtToCollection = () => {
+    this.setState({buttonLiked: true});
+    const favArt = {
+      user_id: this.props.user_id,
+      api_id: this.props.metID,
+      keyword: this.props.searchTerm,
+      is_highlight: this.state.isHighlight,
+      img_url: this.state.img_url,
+      title: this.state.title,
+      artist: this.state.artist,
+      date: this.state.date,
+      collection: this.state.department
+    };
 
-  fetch("http://localhost:3000/fav_arts", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(favArt)
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-}
-
-fetchArt = () => {
-  fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.metID}`)
-  .then(res=>res.json())
-  .then(artData => {
-    // console.log(artData)
-    this.setState({
-      artist: artData.artistDisplayName,
-      title: artData.title,
-      isHighlight: artData.isHighlight,
-      img_url: artData.primaryImageSmall,
-      date: artData.objectDate,
-      department: artData.department
+    fetch("http://localhost:3000/fav_arts", {
+      method: 'POST',
+      headers: {  
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(favArt)
     })
-  })
-}
+    .then(res => res.json())
+    .then(data => console.log(data))
+  }
 
-componentDidMount(){
-  this.fetchArt()
-}
+  fetchArt = () => {
+    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.metID}`)
+    .then(res=>res.json())
+    .then(artData => {
+      // console.log(artData)
+      this.setState({
+        artist: artData.artistDisplayName,
+        title: artData.title,
+        isHighlight: artData.isHighlight,
+        img_url: artData.primaryImageSmall,
+        date: artData.objectDate,
+        department: artData.department
+      })
+    })
+  }
 
-componentDidUpdate(prevProps){
-  if(this.props.metID !== prevProps.metID){
+  componentDidMount(){
     this.fetchArt()
-    }
-}
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.metID !== prevProps.metID){
+      this.fetchArt()
+      }
+  }
 
   render(){
     // console.log(favArt)

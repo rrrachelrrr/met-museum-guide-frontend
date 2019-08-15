@@ -26,6 +26,10 @@ class App extends React.Component {
     })
   }
 
+  // setName = () => {
+  //   this.setState({})
+  // }
+
 
   componentDidMount(){
     if(localStorage.token){

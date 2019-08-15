@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
 
-
   handleLogout = () => {
     localStorage.clear()
     this.props.clearName()
   }
 
   render(){
-    // console.log(this.props)
+    console.log(this.props)
     return (
       <div className="NavBar">
         {
@@ -24,8 +23,12 @@ class NavBar extends Component {
         <label><Link to={'/login'} onClick={this.handleLogout}> Log Out </Link></label>
       </div>
   );}
+
+  // componentDidUpdate(prevProps){
+  //   if (prevProps.name !== this.props.name){
+  //
+  //   }
+  // }
 }
-//
-// <Link to '/profile' onClick={handlePage}
 
 export default NavBar;

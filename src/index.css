@@ -12,8 +12,6 @@ code {
     monospace;
 }
 
-
-
 .PaintingCollection {
   padding: 25px;
   display: flex;
@@ -31,6 +29,7 @@ code {
   margin: 5px;
   border-radius: 15px;
   background-color:white;
+  box-shadow: 1px 1px 3px pink;
  }
 
  .favorite-art-div {
@@ -54,5 +53,10 @@ code {
 
 
  .save-button {
+   /* background-color: pink; */
 
+ }
+
+ .NavBar {
+   /* background-color: pink; */
  }

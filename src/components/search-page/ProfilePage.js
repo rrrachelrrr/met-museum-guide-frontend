@@ -5,7 +5,8 @@ import FavPainting from './FavPainting.js';
 class ProfilePage extends Component {
 
   state = {
-    art: []
+    art: [],
+    searchTerm: ''
   }
 
   filterArt = (data) => {
@@ -26,6 +27,11 @@ class ProfilePage extends Component {
     })})
   }
 
+  handleSearchChange = (e) => {
+    // e.preventDefault()
+    this.setState({searchTerm: e.target.value})
+  }
+
   componentDidMount(){
     fetch("http://localhost:3000/fav_arts", {
       headers: { Authorization: localStorage.token }
@@ -37,8 +43,10 @@ class ProfilePage extends Component {
 
   render(){
     const filteredArt = this.state.art.filter(art => art.user_id === this.props.user_id)
-    const myArt = filteredArt.map(art => {
-      return <FavPainting art={art} deleteOneArt={this.deleteOneArt} key={art.metID}/>
+    const doubleFilteredArt = filteredArt.filter(art => art.keyword.includes(this.state.searchTerm) || art.artist.includes(this.state.searchTerm) || art.title.includes(this.state.searchTerm))
+    //right now returns boolean; can do OR || art.title.includes() etc
+    const myArt = doubleFilteredArt.map(art => {
+      return <FavPainting art={art} deleteOneArt={this.deleteOneArt} key={art.id}/>
     })
 
     // console.log("filter", filteredArt)
@@ -46,7 +54,11 @@ class ProfilePage extends Component {
 
     return (
       <div className="ProfilePage">
-        <span>Hi {this.props.name} it's all yr stuff</span> <Link to={'/paintings'} > Search more art </Link>
+        <span>Hi {this.props.name} it's all yr stuff</span> <Link to={'/paintings'} > Find more art </Link>
+        <br />
+        <input value={this.state.searchTerm}
+        onChange={this.handleSearchChange}
+        type="search" />
         <div className="favorite-art-div">
           {myArt}
         </div>

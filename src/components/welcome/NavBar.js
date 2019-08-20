@@ -24,11 +24,11 @@ class NavBar extends Component {
       </div>
   );}
 
-  // componentDidUpdate(prevProps){
-  //   if (prevProps.name !== this.props.name){
-  //
-  //   }
-  // }
+  componentDidUpdate(prevProps){
+    if (prevProps.name !== this.props.name){
+
+    }
+  }
 }
 
 export default NavBar;

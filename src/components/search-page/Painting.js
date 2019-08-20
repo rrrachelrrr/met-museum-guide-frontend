@@ -32,7 +32,7 @@ class Painting extends Component {
 
     fetch("http://localhost:3000/fav_arts", {
       method: 'POST',
-      headers: {  
+      headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
@@ -40,6 +40,7 @@ class Painting extends Component {
     })
     .then(res => res.json())
     .then(data => console.log(data))
+
   }
 
   fetchArt = () => {

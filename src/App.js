@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-
-// import PaintingCollection from './components/search-page/PaintingCollection.js'
 import Search from './components/search-page/Search.js'
 import ProfilePage from './components/search-page/ProfilePage.js'
 import Signup from './components/welcome/Signup.js'
@@ -26,10 +24,13 @@ class App extends React.Component {
     })
   }
 
-  // setName = () => {
-  //   this.setState({})
-  // }
-
+  setName = (data) => {
+    this.setState({
+      name: data.name,
+      username: data.username,
+      user_id: data.user_id
+    })
+  }
 
   componentDidMount(){
     if(localStorage.token){
@@ -50,7 +51,15 @@ class App extends React.Component {
     <div>
       <Switch>
         <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
+        // <Route path="/login" component={Login} />
+        <Route path="/login"
+        render={(routerProps)=>
+          <>
+          <Login
+            {...routerProps}
+            setName={this.setName}/>
+          </> }
+        />
         <Route path="/paintings"
           render={(routerProps)=>
             <>

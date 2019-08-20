@@ -49,6 +49,7 @@ code {
    margin: 5px;
    border-radius: 15px;
    background-color:white;
+   overflow: hidden auto;
   }
 
 

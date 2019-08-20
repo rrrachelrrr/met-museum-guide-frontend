@@ -13,6 +13,10 @@ class ProfilePage extends Component {
      data.filter(art => art.user_id === this.props.user_id)
     }
 
+  filterByTag = () => {
+
+  }
+
   deleteOneArt = (id) => {
     fetch(`http://localhost:3000/fav_arts/${id}`, {
       method: 'DELETE',

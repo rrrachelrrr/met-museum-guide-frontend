@@ -9,6 +9,10 @@ class Search extends Component {
     num: 12
   }
 
+  resetSearchTerm = () => {
+    this.setState({searchTerm: ''})
+  }
+
   handleChange = e => {
     this.setState({searchTerm: e.target.value})
   }
@@ -26,6 +30,7 @@ class Search extends Component {
         }
        this.setState({displayPaintings: artData.objectIDs, num:12})
     })
+    this.resetSearchTerm()
   }
 
   render(){

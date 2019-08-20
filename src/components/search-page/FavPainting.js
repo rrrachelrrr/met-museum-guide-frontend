@@ -9,6 +9,10 @@ class FavPainting extends Component {
     allTags: []
   }
 
+  resetTag = () => {
+    this.setState({tag: ''})
+  }
+
   addTag = (e) => {
     e.preventDefault()
     let tag = {tag: this.state.tag, art_id: this.props.art.id}
@@ -23,15 +27,17 @@ class FavPainting extends Component {
       body: JSON.stringify(tag)
     })
     .then(res => res.json())
-    .then(data => { console.log(data)
-      // this.state.allTags ?   this.setState({allTags: [...this.state.allTags, data]}) :
-      //   this.setState({allTags: data})
+    .then(data => { console.log("new tag", data)
+      this.state.allTags ?   this.setState({allTags: [...this.state.allTags, this.state.tag]}) :
+        this.setState({allTags: this.state.tag})
     })
   }
 
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
+
+
 
   componentDidMount(){
     fetch(`http://localhost:3000/mytags/${this.props.art.id}`, {
@@ -44,7 +50,10 @@ class FavPainting extends Component {
   }
 
   render(){
-    // console.log(this.state)
+    console.log("allTags", this.state.allTags)
+    const tags = this.state.allTags ? this.state.allTags.map(tag => {
+      return <button className="art-tag" onClick={this.filterByTag}>{tag}</button>
+    }) : console.log("hi")
     return (
       <div className="one-art-please">
       <Card.Content>
@@ -54,6 +63,7 @@ class FavPainting extends Component {
       <p>{this.props.art.artist}</p>
       <p>{this.props.art.date}</p>
       <p>{this.props.art.department}</p>
+      {tags}
       <form onSubmit={this.addTag}>
         <input
           type="text"

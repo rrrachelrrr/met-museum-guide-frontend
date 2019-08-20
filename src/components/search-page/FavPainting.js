@@ -31,6 +31,7 @@ class FavPainting extends Component {
       this.state.allTags ?   this.setState({allTags: [...this.state.allTags, this.state.tag]}) :
         this.setState({allTags: this.state.tag})
     })
+    // this.props.addTags(this.state.tag)
   }
 
   handleChange = (e) => {
@@ -50,9 +51,13 @@ class FavPainting extends Component {
   }
 
   render(){
-    console.log("allTags", this.state.allTags)
+    // console.log("allTags", this.state.allTags)
     const tags = this.state.allTags ? this.state.allTags.map(tag => {
-      return <button className="art-tag" onClick={this.filterByTag}>{tag}</button>
+      return <button
+          className="art-tag"
+          value={tag} onClick={this.props.filterByTag}>
+          {tag}
+        </button>
     }) : console.log("hi")
     return (
       <div className="one-art-please">

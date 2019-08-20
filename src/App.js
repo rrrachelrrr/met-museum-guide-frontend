@@ -24,26 +24,27 @@ class App extends React.Component {
     })
   }
 
-  setName = (data) => {
+  setName = (info) => {
+    // console.log("login info", info)
     this.setState({
-      name: data.name,
-      username: data.username,
-      user_id: data.user_id
+      name: info.name,
+      username: info.username,
+      user_id: info.id
     })
   }
 
-  componentDidMount(){
-    if(localStorage.token){
-    fetch('http://localhost:3000/current_user', {
-      headers: { Authorization:  localStorage.token } } )
-      .then(resp => resp.json())
-      .then(data => this.setState({
-        name: data.name,
-        username: data.username,
-        user_id: data.id
-      })
-    )}
-  }
+  // componentDidMount(){
+  //   if(localStorage.token){
+  //   fetch('http://localhost:3000/current_user', {
+  //     headers: { Authorization:  localStorage.token } } )
+  //     .then(resp => resp.json())
+  //     .then(data => this.setState({
+  //       name: data.name,
+  //       username: data.username,
+  //       user_id: data.id
+  //     })
+  //   )}
+  // }
 
   render(){
     // console.log(this.state)
@@ -51,7 +52,6 @@ class App extends React.Component {
     <div>
       <Switch>
         <Route path="/signup" component={Signup} />
-        // <Route path="/login" component={Login} />
         <Route path="/login"
         render={(routerProps)=>
           <>
@@ -68,7 +68,8 @@ class App extends React.Component {
               username={this.state.username}
               name={this.state.name}
               user_id={this.state.user_id}
-              clearName={this.clearName}/>
+              clearName={this.clearName}
+              setName={this.setName}/>
             <Search
               {...routerProps}
               username={this.state.username}

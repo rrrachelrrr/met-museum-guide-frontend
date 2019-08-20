@@ -34,7 +34,7 @@ class Search extends Component {
   }
 
   render(){
-    // let num = this.state.num
+    console.log("search props", this.props)
     return (
         <>
       <h1> FIND SOME ART</h1>

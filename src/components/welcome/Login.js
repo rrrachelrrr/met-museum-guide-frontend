@@ -24,13 +24,14 @@ class Login extends Component {
     .then(data => {
       if (data.token) {
         localStorage.token = data.token
-         // console.log(data)
+        this.props.setName(data.user)
         this.props.history.push("/paintings")
       }
     })
   }
 
     render(){
+      // console.log(this.props)
       return (
         <form onSubmit={this.submitForm}>
         <input

@@ -34,7 +34,7 @@ class Search extends Component {
   }
 
   render(){
-    console.log("search props", this.props)
+    // console.log("search props", this.props)
     return (
       <div className="art-display">
         <div className="art-filter">

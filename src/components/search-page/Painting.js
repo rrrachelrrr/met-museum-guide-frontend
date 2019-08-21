@@ -11,6 +11,7 @@ class Painting extends Component {
     department: "",
     isHighlight: false,
     buttonLiked: false,
+    tag: ""
   }
 
   // searchTerm: this.props.searchTerm,
@@ -39,8 +40,7 @@ class Painting extends Component {
       body: JSON.stringify(favArt)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
-
+    .then(data => this.setState({tag: data}))
   }
 
   fetchArt = () => {

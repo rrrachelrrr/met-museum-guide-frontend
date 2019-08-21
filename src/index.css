@@ -12,6 +12,31 @@ code {
     monospace;
 }
 
+.login-signup-div {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-image: url('/abstract.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+.login-signup-form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 12rem;
+  border: 2px magenta;
+  /* border-style: 2px double pink; */
+  border-radius: 15px;
+  align-items: space-around;
+  justify-content: center;
+  background-color: rgba(252, 252, 249, 0.267);
+}
+
 .PaintingCollection {
   padding: 25px;
   display: flex;
@@ -22,7 +47,7 @@ code {
   border: 2px solid black;
   width: 25rem;
   max-height: 50rem;
-  overflow: hidden;
+  overflow: hidden auto;
   border-style: solid;
   border-color: gray;
   padding: 10px;
@@ -30,6 +55,7 @@ code {
   border-radius: 15px;
   background-color:white;
   box-shadow: 1px 1px 3px pink;
+  background-color: rgba(252, 252, 249, 0.267)
  }
 
  .favorite-art-div {
@@ -50,6 +76,18 @@ code {
    border-radius: 15px;
    background-color:white;
    overflow: hidden auto;
+   box-shadow: 1px 1px 3px pink;
+   background-color: rgba(252, 252, 249, 0.267)
+  }
+
+  .art-display {
+    background-image: url('/greektiles.jpg');
+    background-color: rgba(252, 252, 249, 0.267);
+
+  }
+
+  .art-filter {
+    background-color: rgba(252, 252, 249, 0.855);
   }
 
 

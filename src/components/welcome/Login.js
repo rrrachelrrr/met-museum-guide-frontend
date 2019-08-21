@@ -24,27 +24,36 @@ class Login extends Component {
     .then(data => {
       if (data.token) {
         localStorage.token = data.token
-         // console.log(data)
+        this.props.setName(data.user)
         this.props.history.push("/paintings")
+      }
+      else {
+        alert(data.errors[0])
       }
     })
   }
 
     render(){
+      // console.log(this.props)
       return (
-        <form onSubmit={this.submitForm}>
-        <input
-          type="text"
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange}/>
-        <input
-          type="password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange} />
-        <input type="submit" />
-        </form>
+        <div className="login-signup-div">
+          <form className="login-signup-form" onSubmit={this.submitForm}>
+          <h4>Log In</h4>
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            value={this.state.username}
+            onChange={this.handleChange}/>
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={this.state.password}
+            onChange={this.handleChange} />
+          <input type="submit" />
+          </form>
+        </div>
     );
   }
 }

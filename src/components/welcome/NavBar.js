@@ -10,7 +10,7 @@ class NavBar extends Component {
   }
 
   render(){
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="NavBar">
         {
@@ -24,11 +24,6 @@ class NavBar extends Component {
       </div>
   );}
 
-  componentDidUpdate(prevProps){
-    if (prevProps.name !== this.props.name){
-
-    }
-  }
 }
 
 export default NavBar;

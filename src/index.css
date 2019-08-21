@@ -90,6 +90,10 @@ code {
     background-color: rgba(252, 252, 249, 0.855);
   }
 
+  .NavBar {
+    background-color: rgba(233, 230, 237, 0.855);
+  }
+
 
  .save-button {
    /* background-color: pink; */

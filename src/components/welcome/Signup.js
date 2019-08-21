@@ -32,9 +32,9 @@ class Signup extends Component {
 
   render(){
     return (
-      <div className="Signup">
-        <span>Sign up dude</span>
-        <form onSubmit={this.handleSignup}>
+      <div className="login-signup-div">
+        <form className="login-signup-form" onSubmit={this.handleSignup}>
+        <h4>Create Your Account! 🖌</h4>
         <input
           type="text"
           name="name"

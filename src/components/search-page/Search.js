@@ -26,7 +26,7 @@ class Search extends Component {
     .then(res=>res.json())
     .then(artData => {
       if (artData.total === 0){
-        return alert("No Art Found!")
+        return alert("No Art Found! Please Search Again 🎨")
         }
        this.setState({displayPaintings: artData.objectIDs, num:12})
     })
@@ -36,17 +36,19 @@ class Search extends Component {
   render(){
     console.log("search props", this.props)
     return (
-        <>
-      <h1> FIND SOME ART</h1>
-      <input value={this.state.searchTerm}
-      onChange={this.handleChange}
-      placeholder="pegasus"
-      type="search" />
-      <button value="submit"  onClick={this.setSearch}> Find some art! </button>
-      <PaintingCollection paintings={this.state.displayPaintings.slice(0, this.state.num)} searchTerm={this.state.searchTerm}
-      user_id={this.props.user_id}/>
-      <button onClick={this.handleSeeMore}>See more</button>
-      </>
+      <div className="art-display">
+        <div className="art-filter">
+          <h1> FIND SOME ART</h1>
+          <input value={this.state.searchTerm}
+            onChange={this.handleChange}
+            placeholder="pegasus"
+            type="search" />
+          <button value="submit"  onClick={this.setSearch}> Find some art! </button>
+          <PaintingCollection paintings={this.state.displayPaintings.slice(0, this.state.num)} searchTerm={this.state.searchTerm}
+          user_id={this.props.user_id}/>
+          <button onClick={this.handleSeeMore}>See more</button>
+      </div>
+    </div>
     )
   }
 

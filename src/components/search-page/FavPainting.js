@@ -38,6 +38,10 @@ class FavPainting extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
+   refreshPage = () => {
+    window.location.reload();
+  }
+
 
 
   componentDidMount(){
@@ -69,6 +73,7 @@ class FavPainting extends Component {
       <p>{this.props.art.date}</p>
       <p>{this.props.art.department}</p>
       {tags}
+      <button onClick={this.refreshPage}>Reset Search</button>
       <form onSubmit={this.addTag}>
         <input
           type="text"

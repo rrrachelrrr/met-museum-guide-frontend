@@ -33,18 +33,18 @@ class App extends React.Component {
     })
   }
 
-  // componentDidMount(){
-  //   if(localStorage.token){
-  //   fetch('http://localhost:3000/current_user', {
-  //     headers: { Authorization:  localStorage.token } } )
-  //     .then(resp => resp.json())
-  //     .then(data => this.setState({
-  //       name: data.name,
-  //       username: data.username,
-  //       user_id: data.id
-  //     })
-  //   )}
-  // }
+  componentDidMount(){
+    if(localStorage.token){
+    fetch('http://localhost:3000/current_user', {
+      headers: { Authorization:  localStorage.token } } )
+      .then(resp => resp.json())
+      .then(data => this.setState({
+        name: data.name,
+        username: data.username,
+        user_id: data.id
+      })
+    )}
+  }
 
   render(){
     // console.log(this.state)

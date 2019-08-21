@@ -73,7 +73,7 @@ class FavPainting extends Component {
       <p>{this.props.art.date}</p>
       <p>{this.props.art.department}</p>
       {tags}
-      <button onClick={this.refreshPage}>Reset Search</button>
+      <button onClick={this.props.resetArtState}>Reset Search</button>
       <form onSubmit={this.addTag}>
         <input
           type="text"

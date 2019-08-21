@@ -8,12 +8,17 @@ class ProfilePage extends Component {
     art: [],
     searchTerm: '',
     tags: [],
-    filterTerm: ''
+    filterTerm: '',
+    initialArt: []
   }
 
   // filterArt = (data) => {
   //    data.filter(art => art.user_id === this.props.user_id)
   //   }
+
+  resetArtState = () => {
+    this.setState({art: this.state.initialArt})
+  }
 
   addTags = (tag) => {
     // need to get all user's tags in state
@@ -37,9 +42,7 @@ class ProfilePage extends Component {
       headers: { Authorization: localStorage.token }
     })
     .then(res => res.json())
-
     // deletedArt = this.state.art.filter(art => art.id !== id)
-
     this.setState({art: this.state.art.filter(art => {
       return art.id !== id
     })})
@@ -55,7 +58,7 @@ class ProfilePage extends Component {
       headers: { Authorization: localStorage.token }
     })
     .then(res => res.json())
-    .then(data => this.setState({art: data, tags: data.map(data => data.tags)}))
+    .then(data => this.setState({art: data, initialArt: data, tags: data.map(data => data.tags)}))
     //map over data to grab tags
     // .then(data => console.log(data[0].tags))
   }
@@ -72,6 +75,7 @@ class ProfilePage extends Component {
       return <FavPainting
       art={art}
       deleteOneArt={this.deleteOneArt}
+      resetArtState={this.resetArtState}
       filterByTag={this.filterByTag}
       key={art.id}/>
     })

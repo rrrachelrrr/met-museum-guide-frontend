@@ -68,9 +68,10 @@ class ProfilePage extends Component {
   render(){
     // console.log(this.state)
     const filteredArt = this.state.art.filter(art => art.user_id === this.props.user_id)
-
     const doubleFilteredArt = filteredArt.filter(art => art.keyword.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || art.artist.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || art.title.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || art.tags.map(tag => tag.tag_name).includes(this.state.searchTerm.toLowerCase()))
+
     //right now returns boolean; can do OR || art.title.includes() etc
+
     const myArt = doubleFilteredArt.map(art => {
       return <FavPainting
       art={art}

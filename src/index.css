@@ -28,7 +28,7 @@ code {
   display: flex;
   flex-direction: column;
   width: 20rem;
-  height: 12rem;
+  height: 15rem;
   border: 2px magenta;
   /* border-style: 2px double pink; */
   border-radius: 15px;
@@ -100,6 +100,9 @@ code {
 
  }
 
- .NavBar {
-   /* background-color: pink; */
+ .alert {
+   padding: 20px;
+   background-color: pink; /* Red */
+   color: white;
+   margin-bottom: 15px;
  }

@@ -9,12 +9,13 @@ class Painting extends Component {
     img_url: "",
     date: "",
     department: "",
+    tag: "",
+    id: "",
     isHighlight: false,
-    buttonLiked: false,
-    tag: ""
+    buttonLiked: false
   }
 
-  // searchTerm: this.props.searchTerm,
+  // keyword: this.props.keyword,
   // metID: this.props.metID
 
   saveArtToCollection = () => {
@@ -22,7 +23,7 @@ class Painting extends Component {
     const favArt = {
       user_id: this.props.user_id,
       api_id: this.props.metID,
-      keyword: this.props.searchTerm,
+      keyword: this.props.keyword,
       is_highlight: this.state.isHighlight,
       img_url: this.state.img_url,
       title: this.state.title,
@@ -40,8 +41,37 @@ class Painting extends Component {
       body: JSON.stringify(favArt)
     })
     .then(res => res.json())
-    .then(data => this.setState({tag: data}))
+    .then(data =>
+      // console.log("save painting", data.id, this.props))
+      this.setState({id: data.id}))
+      // .then (
+        // console.log(this.state))
+
+      // fetch("http://localhost:3000/tag", {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Accept': 'application/json',
+      //     Authorization: localStorage.token
+      //   },
+      //   body: JSON.stringify({tag: this.props.keyword, art_id: data.id})
+      // }))
   }
+
+  // createTag = () => {
+  //   fetch("http://localhost:3000/tag", {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       Authorization: localStorage.token
+  //     },
+  //     body: JSON.stringify({tag: this.props.keyword, art_id: this.state.id})
+  //   })
+  //
+  // }
+
+
 
   fetchArt = () => {
     fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${this.props.metID}`)
@@ -72,7 +102,7 @@ class Painting extends Component {
   render(){
     // console.log(favArt)
     const buttonText = this.state.buttonLiked ? "Saved!" : "Save"
-    // console.log(this.state)
+    // console.log(this.state.id)
     return (
       <div className="Painting">
       <Card.Content>

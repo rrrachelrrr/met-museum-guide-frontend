@@ -27,6 +27,7 @@ class Signup extends Component {
         localStorage.token = data.token
         this.props.history.push("/login")
       }
+      else alert(data.errors[0])
     })
   }
 

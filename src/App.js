@@ -87,7 +87,7 @@ class App extends React.Component {
             user_id={this.state.user_id}/>
           </> }
         />
-        <Route exact path="/" component={Welcome} />
+        <Route path="/" component={Login} />
       </Switch>
 
     </div>)

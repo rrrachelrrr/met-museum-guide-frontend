@@ -17,7 +17,7 @@ class FavPainting extends Component {
     e.preventDefault()
     let tag = {tag: this.state.tag, art_id: this.props.art.id}
     // console.log(tag)
-    fetch("http://localhost:3000/tag", {
+    fetch("https://met-museum-guide-api.herokuapp.com/tag", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

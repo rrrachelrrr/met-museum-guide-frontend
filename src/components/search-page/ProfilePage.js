@@ -37,7 +37,7 @@ class ProfilePage extends Component {
   }
 
   deleteOneArt = (id) => {
-    fetch(`http://localhost:3000/fav_arts/${id}`, {
+    fetch(`https://met-museum-guide-api.herokuapp.com/fav_arts/${id}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.token }
     })
@@ -54,7 +54,7 @@ class ProfilePage extends Component {
   }
 
   componentDidMount(){
-    fetch("http://localhost:3000/fav_arts", {
+    fetch("https://met-museum-guide-api.herokuapp.com/fav_arts", {
       headers: { Authorization: localStorage.token }
     })
     .then(res => res.json())

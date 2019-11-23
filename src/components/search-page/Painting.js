@@ -32,7 +32,7 @@ class Painting extends Component {
       collection: this.state.department
     };
 
-    fetch("http://localhost:3000/fav_arts", {
+    fetch("https://met-museum-guide-api.herokuapp.com/fav_arts", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

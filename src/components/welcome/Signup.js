@@ -13,7 +13,7 @@ class Signup extends Component {
 
   handleSignup = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/users', {
+    fetch('https://met-museum-guide-api.herokuapp.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

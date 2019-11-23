@@ -13,7 +13,7 @@ class Login extends Component {
 
   submitForm = e => {
     e.preventDefault()
-    fetch('http://localhost:3000/login', {
+    fetch('https://met-museum-guide-api.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -37,7 +37,7 @@ class ProfilePage extends Component {
   }
 
   deleteOneArt = (id) => {
-    fetch(`localhost:3000/fav_arts/${id}`, {
+    fetch(`http://localhost:3000/fav_arts/${id}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.token }
     })
@@ -54,7 +54,7 @@ class ProfilePage extends Component {
   }
 
   componentDidMount(){
-    fetch("localhost:3000/fav_arts", {
+    fetch("http://localhost:3000/fav_arts", {
       headers: { Authorization: localStorage.token }
     })
     .then(res => res.json())

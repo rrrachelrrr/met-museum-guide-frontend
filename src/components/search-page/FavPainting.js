@@ -45,24 +45,28 @@ class FavPainting extends Component {
 
 
   componentDidMount(){
-    fetch(`http://localhost:3000/${this.props.art.id}`, {
+    // console.log(this.props.art.id)
+    fetch(`http://localhost:3000/mytags/${this.props.art.id}`, {
       headers: { Authorization: localStorage.token }
     })
     .then(res=>res.json())
     .then(tagData => {
+      // console.log(tagData)
       this.setState({allTags: tagData})
     })
   }
 
   render(){
-    // console.log("allTags", this.state.allTags)
+    console.log("allTags", this.state.allTags)
+    // const tags = "+"
     const tags = this.state.allTags ? this.state.allTags.map(tag => {
-      return <button
-          className="art-tag"
-          value={tag} onClick={this.props.filterByTag}>
-          {tag}
-        </button>
-    }) : console.log("hi")
+        return <button
+            className="art-tag"
+            value={tag} onClick={this.props.filterByTag}>
+            {tag}
+          </button>
+      }) : console.log("hi")
+
     return (
       <div className="one-art-please">
       <Card.Content>
